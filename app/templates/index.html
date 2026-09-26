@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f8fc">
+    <meta name="description" content="A heart health risk screening demonstration for research and educational use.">
+    <title>CardioLens | Heart Health Screening</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="{{ url_for('home') }}" aria-label="CardioLens home">
+            <span class="brand-mark" aria-hidden="true">♥</span>
+            <span>Cardio<span class="brand-light">Lens</span></span>
+        </a>
+        <nav class="navigation" aria-label="Main navigation">
+            <a class="nav-link active" href="{{ url_for('home') }}">Screening</a>
+            <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+        </nav>
+        <span class="topbar-note"><span class="status-dot"></span> Research demo</span>
+    </header>
+
+    <main class="page-shell">
+        <section class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow"><span class="eyebrow-line"></span> HEART HEALTH · AI RESEARCH</p>
+                <h1>A clearer view of<br><span>heart health.</span></h1>
+                <p class="hero-description">Explore a machine learning screening estimate from a set of clinical measurements. Designed as a research demonstration for healthcare professionals.</p>
+                <div class="hero-points">
+                    <span><span class="check-icon">✓</span> Quick model estimate</span>
+                    <span><span class="check-icon">✓</span> No patient account required</span>
+                </div>
+            </div>
+            <aside class="hero-card" aria-label="Important information">
+                <div class="hero-card-icon" aria-hidden="true">✚</div>
+                <div>
+                    <p class="hero-card-title">For research and education</p>
+                    <p class="hero-card-copy">This prototype is not clinically validated and must not be used to diagnose or guide treatment.</p>
+                </div>
+            </aside>
+        </section>
+
+        <section class="workspace" aria-labelledby="form-title">
+            <div class="form-panel">
+                <div class="panel-heading">
+                    <div>
+                        <p class="section-kicker">PATIENT PROFILE</p>
+                        <h2 id="form-title">Enter clinical measurements</h2>
+                        <p class="panel-subtitle">Complete each field using the values from the patient record.</p>
+                    </div>
+                    <span class="required-note"><span>*</span> Required</span>
+                </div>
+
+                <form id="prediction-form">
+                    <div class="form-section">
+                        <h3><span class="section-number">01</span> Basic information</h3>
+                        <div class="form-grid">
+                            <label class="field"><span>Age <em>*</em></span><span class="input-wrap"><input type="number" name="age" min="1" max="120" placeholder="e.g. 54" required><small>years</small></span></label>
+                            <label class="field"><span>Sex <em>*</em></span><select name="sex" required><option value="" disabled selected>Select sex</option><option value="Female">Female</option><option value="Male">Male</option></select></label>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3><span class="section-number">02</span> Clinical measurements</h3>
+                        <div class="form-grid">
+                            <label class="field"><span>Chest pain type <em>*</em></span><select name="cp" required><option value="" disabled selected>Select type</option><option value="typical angina">Typical angina</option><option value="atypical angina">Atypical angina</option><option value="non-anginal">Non-anginal</option><option value="asymptomatic">Asymptomatic</option></select></label>
+                            <label class="field"><span>Resting blood pressure <em>*</em></span><span class="input-wrap"><input type="number" name="trestbps" min="50" max="300" placeholder="e.g. 125" required><small>mmHg</small></span></label>
+                            <label class="field"><span>Serum cholesterol <em>*</em></span><span class="input-wrap"><input type="number" name="chol" min="50" max="800" placeholder="e.g. 210" required><small>mg/dL</small></span></label>
+                            <label class="field"><span>Fasting blood sugar &gt; 120 mg/dL <em>*</em></span><select name="fbs" required><option value="" disabled selected>Select value</option><option value="TRUE">Yes</option><option value="FALSE">No</option></select></label>
+                            <label class="field"><span>Resting ECG <em>*</em></span><select name="restecg" required><option value="" disabled selected>Select result</option><option value="normal">Normal</option><option value="st-t abnormality">ST-T wave abnormality</option><option value="lv hypertrophy">Left ventricular hypertrophy</option></select></label>
+                            <label class="field"><span>Maximum heart rate <em>*</em></span><span class="input-wrap"><input type="number" name="thalch" min="40" max="250" placeholder="e.g. 155" required><small>bpm</small></span></label>
+                            <label class="field"><span>Exercise-induced angina <em>*</em></span><select name="exang" required><option value="" disabled selected>Select value</option><option value="TRUE">Yes</option><option value="FALSE">No</option></select></label>
+                            <label class="field"><span>ST depression (oldpeak) <em>*</em></span><span class="input-wrap"><input type="number" name="oldpeak" step="0.1" min="-3" max="10" placeholder="e.g. 1.2" required><small>mm</small></span></label>
+                            <label class="field"><span>ST segment slope <em>*</em></span><select name="slope" required><option value="" disabled selected>Select slope</option><option value="upsloping">Upsloping</option><option value="flat">Flat</option><option value="downsloping">Downsloping</option></select></label>
+                            <label class="field"><span>Major vessels (ca) <em>*</em></span><select name="ca" required><option value="" disabled selected>Select count</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></label>
+                            <label class="field"><span>Thalassemia (thal) <em>*</em></span><select name="thal" required><option value="" disabled selected>Select result</option><option value="normal">Normal</option><option value="fixed defect">Fixed defect</option><option value="reversable defect">Reversible defect</option></select></label>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <p class="privacy-note"><span aria-hidden="true">▣</span> Demo only: values are sent to this app for scoring. Use synthetic data, never real patient measurements.</p>
+                        <button type="submit" id="predict-button"><span>Generate screening estimate</span><span aria-hidden="true">→</span></button>
+                    </div>
+                </form>
+            </div>
+
+            <aside class="result-panel" aria-live="polite" aria-atomic="true">
+                <div class="result-topline"><span class="result-icon" aria-hidden="true">⌁</span><span>MODEL OUTPUT</span></div>
+                <div id="result" class="result-content">
+                    <div class="result-placeholder-icon" aria-hidden="true">♥</div>
+                    <h2>Screening estimate</h2>
+                    <p id="prediction-text">Complete the profile and generate an estimate to see the model output here.</p>
+                </div>
+                <div class="result-footnote"><span class="info-icon">i</span><p>Results are estimates from an unvalidated research model. They are not a diagnosis or a substitute for professional medical judgment.</p></div>
+            </aside>
+        </section>
+
+        <footer class="site-footer"><span>CardioLens · AI heart health research demo</span><a href="{{ url_for('contact') }}">Questions or feedback? Contact us <span aria-hidden="true">→</span></a></footer>
+    </main>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f8fc">
+    <meta name="description" content="Contact the CardioLens project about feedback or technical issues.">
+    <title>Contact | CardioLens</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="{{ url_for('home') }}" aria-label="CardioLens home"><span class="brand-mark" aria-hidden="true">♥</span><span>Cardio<span class="brand-light">Lens</span></span></a>
+        <nav class="navigation" aria-label="Main navigation"><a class="nav-link" href="{{ url_for('home') }}">Screening</a><a class="nav-link active" href="{{ url_for('contact') }}">Contact</a></nav>
+        <span class="topbar-note"><span class="status-dot"></span> Research demo</span>
+    </header>
+    <main class="page-shell">
+        <section class="contact-hero">
+            <p class="eyebrow"><span class="eyebrow-line"></span> WE’RE HERE TO HELP</p>
+            <h1>Let’s make this<br><span>project better.</span></h1>
+        </section>
+        <section class="contact-layout">
+            <div class="contact-card">
+                <p class="section-kicker">CONTACT THE PROJECT</p>
+                <h2>Feedback, questions, or issues?</h2>
+                <p>If you’re a healthcare professional exploring this research demo, I’d value your feedback. Please email me with any technical issues, questions, or suggestions for improvement.</p>
+                <div class="contact-email">
+                    <span class="contact-email-icon" aria-hidden="true">✉</span>
+                    <div><small>EMAIL</small><a href="mailto:{{ contact_email }}">{{ contact_email }}</a></div>
+                </div>
+            </div>
+            <aside class="contact-side">
+                <div><div class="contact-side-mark" aria-hidden="true">♡</div><p class="section-kicker">A NOTE ON THE DEMO</p><h2>Built for thoughtful feedback.</h2><p>CardioLens is an educational prototype. Please don’t include patient names or identifying health information in your email.</p></div>
+            </aside>
+        </section>
+        <footer class="site-footer"><span>CardioLens · AI heart health research demo</span><a href="{{ url_for('home') }}">← Return to screening</a></footer>
+    </main>
+</body>
+</html>
